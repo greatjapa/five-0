@@ -31,14 +31,21 @@ public class RoutesController {
     }
 
     private List<Connection> breadthSearch(String city, int steps, int depth) {
-        List<Connection> result = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        visited.add(city);
 
+        List<Connection> result = new LinkedList<>();
         List<Route> routes = repository.findByCity(city);
         do {
             List<Route> continuation = new LinkedList<>();
             for (Route route : routes) {
-                result.add(new Connection(route.getDestination(), steps));
-                continuation.addAll(repository.findByCity(route.getDestination()));
+                String nextCity = route.getDestination();
+
+                if (!visited.contains(nextCity)) {
+                    result.add(new Connection(nextCity, steps));
+                    continuation.addAll(repository.findByCity(nextCity));
+                    visited.add(nextCity);
+                }
             }
             routes = continuation;
             steps++;
