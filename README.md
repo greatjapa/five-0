@@ -8,10 +8,10 @@ The word 'five-0' is a skate trick name. I'm a huge fan of skateboarding and whe
 ## How to build
 
 ```sh
-git clone https://github.com/greatjapa/five-0.git
-cd five-0
-make up
-make load
+$ git clone https://github.com/greatjapa/five-0.git
+$ cd five-0
+$ make up
+$ make load
 ```
 
 ## How to run
