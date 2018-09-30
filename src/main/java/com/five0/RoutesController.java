@@ -21,13 +21,21 @@ public class RoutesController {
     @Autowired
     private RouteRepository repository;
 
-    @RequestMapping(method=GET, name = "/connections")
-    public @ResponseBody List<Connection> connections(
+    @RequestMapping(method=GET, name = "/connection")
+    public @ResponseBody List<Connection> connection(
             @RequestParam("city") String city,
             @RequestParam(value="depth", required=false) Integer depth) {
         depth = (depth == null) ? 3 : depth;
         return breadthSearch(city, 0, depth);
     }
+
+//    @RequestMapping(method=GET, name = "/time")
+//    public @ResponseBody List<Connection> time(
+//            @RequestParam("city") String city,
+//            @RequestParam(value="depth", required=false) Integer depth) {
+//        depth = (depth == null) ? 3 : depth;
+//        return breadthSearch(city, 0, depth);
+//    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {

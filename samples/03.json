@@ -1,6 +1,6 @@
 {
   "city":"São Paulo",
   "destination":"Campinas",
-  "departure":"18:00",
-  "arrive":"19:00"
+  "departure":"00:00",
+  "arrive":"5:00"
 }
