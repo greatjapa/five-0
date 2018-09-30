@@ -3,6 +3,7 @@ package com.five0;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -24,10 +25,13 @@ public class RoutesController {
     public @ResponseBody List<Connection> connections(
             @RequestParam("city") String city,
             @RequestParam(value="depth", required=false) Integer depth) {
-        if (depth == null) {
-            depth = 3;
-        }
+        depth = (depth == null) ? 3 : depth;
         return breadthSearch(city, 0, depth);
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public void handleMissingParams(MissingServletRequestParameterException ex) {
+        ex.printStackTrace();
     }
 
     private List<Connection> breadthSearch(String city, int steps, int depth) {
