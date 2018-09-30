@@ -1,7 +1,3 @@
-make up
-curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/routes/active" -d @samples/01.json
-http://localhost:9200/routes/active/_search
-
 # Five-0
 
 [![Build Status](https://travis-ci.org/greatjapa/five-0.svg?branch=master)](https://travis-ci.org/greatjapa/five-0)
@@ -20,11 +16,11 @@ make load
 
 ## How to run
 
-The `make up` command build the microservice code with maven and raise a docker container with it. As database, we use elasticsearch (see `docker-compose.yml`:
+The `make up` command build the microservice code with maven and raise a docker container with it. As database, we use elasticsearch (see `docker-compose.yml`):
 
 Crooked has 3 endpoints:
-- GET  /connection?city=<city>&depth=<depth>
-- GET  /time?city=<city>
+- GET  /connection?city=\<city\>&depth=\<depth\>
+- GET  /time?city=\<city\>
 
 As an example, you can access the microservice using `curl` command:
 ```sh
