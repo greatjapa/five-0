@@ -1,7 +1,5 @@
 package com.five0;
 
-import java.util.Objects;
-
 public class Time {
 
     private String city;
