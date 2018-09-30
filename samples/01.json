@@ -1,1 +1,6 @@
-{"city":"Rio de Janeiro", "destination":"São Paulo","departure":"8:00","arrive":"9:00"}
+{
+  "city":"Rio de Janeiro",
+  "destination":"São Paulo",
+  "departure":"8:00",
+  "arrive":"9:00"
+}

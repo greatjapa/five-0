@@ -3,6 +3,8 @@ package com.five0;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import java.util.Objects;
+
 @Document(indexName = "routes", type = "active")
 public class Route {
 
@@ -61,6 +63,21 @@ public class Route {
 
     public void setArrive(String arrive) {
         this.arrive = arrive;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return Objects.equals(city, route.city) &&
+                Objects.equals(destination, route.destination);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(city, destination);
     }
 
     @Override

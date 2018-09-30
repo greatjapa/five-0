@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RouteRepository extends ElasticsearchRepository<Route, String> {
 
-    Route findByCity(String city);
+    List<Route> findByCity(String city);
 
     List<Route> findByDestination(String destination);
 }

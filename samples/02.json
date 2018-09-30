@@ -1,1 +1,6 @@
-{"city":"Belo Horizonte", "destination":"São Paulo","departure":"18:00","arrive":"19:00"}
+{
+  "city":"Rio de Janeiro",
+  "destination":"Belo Horizonte",
+  "departure":"18:00",
+  "arrive":"19:00"
+}
