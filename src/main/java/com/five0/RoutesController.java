@@ -1,19 +1,13 @@
 package com.five0;
 
+import com.five0.graph.DijkstraAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class RoutesController {
@@ -21,7 +15,7 @@ public class RoutesController {
     @Autowired
     private RouteRepository repository;
 
-    @RequestMapping(method=GET, name = "/connection")
+    @RequestMapping(method=GET, value="/connection")
     public @ResponseBody List<Connection> connection(
             @RequestParam("city") String city,
             @RequestParam(value="depth", required=false) Integer depth) {
@@ -29,13 +23,31 @@ public class RoutesController {
         return breadthSearch(city, 0, depth);
     }
 
-//    @RequestMapping(method=GET, name = "/time")
-//    public @ResponseBody List<Connection> time(
-//            @RequestParam("city") String city,
-//            @RequestParam(value="depth", required=false) Integer depth) {
-//        depth = (depth == null) ? 3 : depth;
-//        return breadthSearch(city, 0, depth);
-//    }
+    @RequestMapping(method=GET, value="/time")
+    public @ResponseBody List<Time> time(@RequestParam("city") String city) {
+        List<Route> routes = new ArrayList<>();
+        repository.findAll().forEach(routes::add);
+
+        Set<String> cities = new HashSet<>();
+        for (Route route : routes) {
+            if (!route.getCity().equals(city)) {
+                cities.add(route.getCity());
+            }
+            if (!route.getDestination().equals(city)) {
+                cities.add(route.getDestination());
+            }
+        }
+
+        DijkstraAlgorithm algorithm = new DijkstraAlgorithm(routes);
+        algorithm.execute(city);
+
+        List<Time> result = new ArrayList<>();
+        for (String c : cities) {
+            result.add(new Time(c, algorithm.getShortestDistance(c)));
+        }
+        result.sort(Comparator.comparing(Time::getTime));
+        return result;
+    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public void handleMissingParams(MissingServletRequestParameterException ex) {
@@ -64,5 +76,4 @@ public class RoutesController {
         } while(!routes.isEmpty() && steps < depth);
         return result;
     }
-
 }

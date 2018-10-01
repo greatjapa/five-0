@@ -3,6 +3,8 @@ package com.five0;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Document(indexName = "routes", type = "active")
@@ -63,6 +65,13 @@ public class Route {
 
     public void setArrive(String arrive) {
         this.arrive = arrive;
+    }
+
+    public float getWeight() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime departureTime = LocalTime.parse(departure, f);
+        LocalTime arriveTime = LocalTime.parse(arrive, f);
+        return (arriveTime.getHour() + arriveTime.getMinute() * 0.01f) - (departureTime.getHour() + departureTime.getMinute() * 0.01f);
     }
 
     @Override

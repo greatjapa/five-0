@@ -18,7 +18,7 @@ public class Time {
         this.city = city;
     }
 
-    public float getTime() {
+    public Float getTime() {
         return time;
     }
 
