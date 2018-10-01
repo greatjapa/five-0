@@ -18,13 +18,89 @@ $ make load
 
 The `make up` command build the microservice code with maven and raise a docker container with it. As database, we use elasticsearch (see `docker-compose.yml`):
 
-Crooked has 3 endpoints:
+Five-0 has 2 endpoints:
 - GET  /connection?city=\<city\>&depth=\<depth\>
+
+As an example, you can try:
+```sh
+curl http://localhost:8080/connection?city=Rio%20de%20Janeiro
+```
+and the result will be:
+
+```json
+[
+    {
+        "city" : "Belo Horizonte",
+        "steps" : 0
+    },
+    {
+        "city" : "São Paulo",
+        "steps" : 0
+    },
+    {
+        "steps" : 1,
+        "city" : "Campinas"
+    },
+    {
+        "city" : "Trindade",
+        "steps" : 2
+    }
+]
+
+```
+
+you also may define a max depth as argument:
+
+```sh
+curl http://localhost:8080/connection?city=Rio%20de%20Janeiro&depth=2
+```
+
+the result is:
+
+```json
+[
+    {
+        city: "Belo Horizonte",
+        steps: 0
+    },
+    {
+        city: "São Paulo",
+        steps: 0
+    },
+    {
+        city: "Campinas",
+        steps: 1
+    }
+]
+```
+
 - GET  /time?city=\<city\>
 
-As an example, you can access the microservice using `curl` command:
+The following example shows how this endpoint works:
+
 ```sh
-curl http://localhost:8080/connection?city=Rio%20de%20Janeiro&depth=5
-curl http://localhost:8080/connection?city=Rio%20de%20Janeiro
 curl http://localhost:8080/time?city=Rio%20de%20Janeiro
+```
+
+the result is:
+
+```json
+[
+    {
+        city: "Belo Horizonte",
+        time: 2
+    },
+    {
+        city: "São Paulo",
+        time: 5
+    },
+    {
+        city: "Campinas",
+        time: 10
+    },
+    {
+        city: "Trindade",
+        time: 20
+    }
+]
 ```
