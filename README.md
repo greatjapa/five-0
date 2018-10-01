@@ -6,7 +6,7 @@
 The word `five-0` is a skateboard trick. I'm a huge fan of skateboarding and when I started to develop open source projects,
 I decided to use skate tricks as project names.
 
-# Architecture
+## Introduction
 
 The image bellow shows the `five-0` architecture. Basically, `five-0` is a microservice that read information from `elasticsearch` and
 make available through HTTP endpoints:
