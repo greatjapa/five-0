@@ -3,10 +3,19 @@
 [![Build Status](https://travis-ci.org/greatjapa/five-0.svg?branch=master)](https://travis-ci.org/greatjapa/five-0)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/greatjapa/five-0/blob/master/LICENSE)
 
-The word `five-0` is a skateboard trick. I'm a huge fan of skateboarding and when I started to develop open source projects, I decided to use skate tricks as project names.
+The word `five-0` is a skateboard trick. I'm a huge fan of skateboarding and when I started to develop open source projects,
+I decided to use skate tricks as project names.
 
+# Architecture
+
+The image bellow shows the `five-0` architecture. Basically, `five-0` is a microservice that read information from `elasticsearch` and
+make available through HTTP endpoints:
 
 ![architecture](https://github.com/greatjapa/five-0/blob/master/docs/arch.png)
+
+The sample data stored into elasticsearch is shown down below:
+
+![sample](https://github.com/greatjapa/five-0/blob/master/docs/sample.png)
 
 
 ## How to build
@@ -20,7 +29,8 @@ $ make load
 
 ## How to run
 
-The `make up` command build the microservice code with maven and raise a docker container with it. As database, we use elasticsearch (see `docker-compose.yml`):
+The `make up` command build the microservice code with maven and raise a docker container with it.
+As database, we use elasticsearch (see `docker-compose.yml`):
 
 Five-0 has 2 endpoints:
 - GET  `/connection?city=\<city\>&depth=\<depth\>`
