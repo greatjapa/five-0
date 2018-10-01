@@ -5,6 +5,10 @@
 
 The word `five-0` is a skateboard trick. I'm a huge fan of skateboarding and when I started to develop open source projects, I decided to use skate tricks as project names.
 
+
+![architecture](https://github.com/greatjapa/five-0/blob/master/docs/arch.png)
+
+
 ## How to build
 
 ```sh
