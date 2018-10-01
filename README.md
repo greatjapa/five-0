@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/greatjapa/five-0.svg?branch=master)](https://travis-ci.org/greatjapa/five-0)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/greatjapa/five-0/blob/master/LICENSE)
 
-The word 'five-0' is a skate trick name. I'm a huge fan of skateboarding and when I started to develop open source projects, I decided to use skate tricks as project names.
+The word `five-0` is a skateboard trick. I'm a huge fan of skateboarding and when I started to develop open source projects, I decided to use skate tricks as project names.
 
 ## How to build
 
@@ -50,6 +50,7 @@ and the result will be:
 ```
 
 you also may define a max depth as argument:
+
 
 ```sh
 curl http://localhost:8080/connection?city=Rio%20de%20Janeiro&depth=2
