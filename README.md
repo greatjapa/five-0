@@ -19,7 +19,7 @@ $ make load
 The `make up` command build the microservice code with maven and raise a docker container with it. As database, we use elasticsearch (see `docker-compose.yml`):
 
 Five-0 has 2 endpoints:
-- GET  /connection?city=\<city\>&depth=\<depth\>
+- GET  `/connection?city=\<city\>&depth=\<depth\>`
 
 As an example, you can try:
 ```sh
@@ -75,7 +75,7 @@ the result is:
 ]
 ```
 
-- GET  /time?city=\<city\>
+- GET  `/time?city=\<city\>`
 
 The following example shows how this endpoint works:
 
