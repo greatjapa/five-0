@@ -60,16 +60,16 @@ the result is:
 ```json
 [
     {
-        city: "Belo Horizonte",
-        steps: 0
+        "city": "Belo Horizonte",
+        "steps": 0
     },
     {
-        city: "São Paulo",
-        steps: 0
+        "city": "São Paulo",
+        "steps": 0
     },
     {
-        city: "Campinas",
-        steps: 1
+        "city": "Campinas",
+        "steps": 1
     }
 ]
 ```
@@ -87,20 +87,20 @@ the result is:
 ```json
 [
     {
-        city: "Belo Horizonte",
-        time: 2
+        "city": "Belo Horizonte",
+        "time": 2.29
     },
     {
-        city: "São Paulo",
-        time: 5
+        "city": "São Paulo",
+        "time": 5.19
     },
     {
-        city: "Campinas",
-        time: 10
+        "city": "Campinas",
+        "time": 9.89
     },
     {
-        city: "Trindade",
-        time: 20
+        "city": "Trindade",
+        "time": 19.75
     }
 ]
 ```
